@@ -1,0 +1,38 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.github.diwakar1988.picker"
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //give your release google project api key
+            resValue "string", "google_api_key_gcp", '"AIzaSyAtXvdrzP8y0bJwSOBmGioIcZUQOetTN2M"'
+        }
+        debug {
+            //give your debug google project api key
+            resValue "string", "google_api_key_gcp", '"AIzaSyAtXvdrzP8y0bJwSOBmGioIcZUQOetTN2M"'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
+    compile 'com.google.android.gms:play-services-places:11.0.1'
+    testCompile 'junit:junit:4.12'
+
+}
